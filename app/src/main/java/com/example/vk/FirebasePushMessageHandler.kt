@@ -30,10 +30,6 @@ class FirebasePushMessageHandler : FirebaseMessagingService() {
         val mAuth = FirebaseAuth.getInstance()
         val currentPhone = mAuth.currentUser?.phoneNumber
         val phone = remoteMessage.data["phone"]
-        val app = remoteMessage.data["app"]
-        val content = remoteMessage.data["description"]
-        val title = remoteMessage.data["title"]
-
         Log.d(
             "fcm",
             "Current phone number: '$currentPhone', received event for '$phone', " +
@@ -42,29 +38,48 @@ class FirebasePushMessageHandler : FirebaseMessagingService() {
 
         if (phone == currentPhone) {
             Log.d("fcm", "SEnding notification")
-            showNotification(app, title, content)
+            showNotification(remoteMessage)
         }
     }
 
-    private fun showNotification(app: String?, title: String?, content: String?) {
+    private fun showNotification(remoteMessage: RemoteMessage) {
         createNotificationChannel()
 
-        val goToNotifications = Intent(this, Notification::class.java)
+        val notificationType = remoteMessage.data["type"]
+
+        var notificationIntent: Intent;
+        var notificationTitle = "";
+        var notificationContent = "";
+
+        if (notificationType == "statusUpdate") {
+            notificationTitle = "Service status Update"
+            notificationContent = "Your service status was updated to ${remoteMessage.data["status"]}"
+            notificationIntent = Intent(this, Review::class.java);
+        } else {
+
+            val app = remoteMessage.data["app"]
+            val content = remoteMessage.data["description"]
+
+            notificationTitle = remoteMessage.data["title"] ?: "Booking Acceptd";
+            notificationContent = if (app == "Engineer") {
+                content.orEmpty()
+            } else "Your service was assigned to Service Enginner\nFor more info click here"
+
+            notificationIntent = Intent(this, Notification::class.java)
+        }
 
         val notifIntent = PendingIntent.getActivity(
             this,
             0,
-            goToNotifications,
+            notificationIntent,
             PendingIntent.FLAG_IMMUTABLE
         )
 
-        val notifContent =  if (app == "Engineer") { content } else "Your service was assigned to Service Enginner\nFor more info click here"
-
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
             .setSmallIcon(R.drawable.logo)
-            .setContentTitle(title ?: "Booking Accepted")
+            .setContentTitle(notificationTitle)
             .setContentIntent(notifIntent)
-            .setContentText(notifContent)
+            .setContentText(notificationContent)
             .setAutoCancel(true)
             .build()
 
