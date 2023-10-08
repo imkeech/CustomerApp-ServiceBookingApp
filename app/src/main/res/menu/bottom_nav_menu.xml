@@ -1,0 +1,15 @@
+<!-- res/menu/bottom_nav_menu.xml -->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_notification"
+        android:title="Notification" />
+    <item
+        android:id="@+id/navigation_profile"
+        android:title="Profile" />
+
+    <!-- Add more menu items for your bottom navigation here if needed -->
+</menu>

@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".OTP_Page"
+    android:background="#ffffff"
+    android:focusableInTouchMode="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="17dp">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/BackButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:layout_marginLeft="15dp"
+            android:tint="@color/prjtred"
+            android:backgroundTint="@color/prjtred"
+            app:lottie_colorFilter="@color/prjtred"
+            app:lottie_rawRes="@raw/back" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="121dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:layout_width="210dp"
+            android:layout_height="210dp"
+            android:layout_gravity="center"
+            android:src="@drawable/mail_box_img" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/gotham"
+            android:text="OTP Verification"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="28sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/ph_no"
+            android:layout_width="377dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="OTP Sent to " />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="16dp"
+            android:weightSum="100">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="8dp"
+                android:layout_weight="16.66"
+                android:background="#f6f6f6">
+
+                <EditText
+                    android:id="@+id/otp6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:fontFamily="@font/gotham"
+                    android:hint="&#x2731;"
+                    android:inputType="phone"
+                    android:maxLength="1"
+                    android:padding="12dp"
+                    android:textAlignment="center"
+                    android:textColor="#000000"
+                    android:textColorHint="#c7c7c8"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <Button
+            android:id="@+id/check"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="1dp"
+            android:text="VERIFY"
+            android:textAllCaps="false"
+            android:textColor="#ffffff"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>

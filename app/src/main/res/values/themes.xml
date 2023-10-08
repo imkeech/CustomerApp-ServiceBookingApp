@@ -1,0 +1,18 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.Vk" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/prjtred</item>
+        <item name="colorPrimaryVariant">@color/prjtred2</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorSecondary">@color/prjtred1</item>
+        <item name="colorSecondaryVariant">@color/prjtred3</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="android:statusBarColor">@color/prjtred</item>
+        <item name="android:textColorHint">@color/grey</item>
+
+
+        <item name="android:fontFamily">@font/gotham</item>
+    </style>
+
+
+</resources>

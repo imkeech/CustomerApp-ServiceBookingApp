@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="grey">#808080</color>
+    <color name="prjtred1">#6B0000</color>
+    <color name="prjtred">#910000</color>
+    <color name="prjtred2">#D32431</color>
+    <color name="prjtred3">#FF3F3D</color>
+    <color name="prjtred4">#F6CDCD</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

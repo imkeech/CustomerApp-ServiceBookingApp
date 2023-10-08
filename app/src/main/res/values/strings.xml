@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">vk</string>
+
+    <string-array name="problem">
+        <item>SC525 error</item>
+        <item>Door Open</item>
+        <item>Gear Sound</item>
+        <item> Add Toner</item>
+        <item>Lines in Print Out</item>
+        <item>Others</item>
+    </string-array>
+</resources>
