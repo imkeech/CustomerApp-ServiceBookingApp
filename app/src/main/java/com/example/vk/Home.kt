@@ -49,8 +49,8 @@ class Home : AppCompatActivity() {
             }
         })
 
-        val notificationIntent = Intent(this, Review::class.java)
-        startActivity(notificationIntent)
+        /*val notificationIntent = Intent(this, Review::class.java)
+        startActivity(notificationIntent)*/
         fetchServiceCount() // Fetch the current service count
         fetchAndDisplayUserData()
     }

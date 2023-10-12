@@ -46,7 +46,7 @@ class Notification : AppCompatActivity() {
                     val clearButton = cardView.findViewById<ImageView>(R.id.clearButton)
 
                     cardDesc.text = if (fromApp !="Engineer") {
-                        description + "Resolution time: 48 hrs \n  "} else {description}
+                        description + "\n"} else {description}
 
                     // Set a unique tag for the card view
                     cardView.tag = doc.id
