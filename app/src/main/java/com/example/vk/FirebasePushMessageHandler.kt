@@ -47,14 +47,14 @@ class FirebasePushMessageHandler : FirebaseMessagingService() {
 
         val notificationType = remoteMessage.data["type"]
 
-        var notificationIntent: Intent;
+        val notificationIntent: Intent;
         var notificationTitle = "";
         var notificationContent = "";
 
         if (notificationType == "statusUpdate") {
             notificationTitle = "Service status Update"
-            notificationContent = "Your service status was updated to ${remoteMessage.data["status"]}"
-            notificationIntent = Intent(this, Review::class.java);
+            notificationContent = "Your service status was updated to ${remoteMessage.data["status"]}. Click to submit a review."
+            notificationIntent = Intent(this, Review::class.java)
         } else {
 
             val app = remoteMessage.data["app"]
@@ -72,7 +72,7 @@ class FirebasePushMessageHandler : FirebaseMessagingService() {
             this,
             0,
             notificationIntent,
-            PendingIntent.FLAG_IMMUTABLE
+            PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_MUTABLE
         )
 
         val notification = NotificationCompat.Builder(this, CHANNEL_ID)
