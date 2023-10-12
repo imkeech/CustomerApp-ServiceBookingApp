@@ -1,6 +1,7 @@
 package com.example.vk
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -48,6 +49,8 @@ class Home : AppCompatActivity() {
             }
         })
 
+        val notificationIntent = Intent(this, Review::class.java)
+        startActivity(notificationIntent)
         fetchServiceCount() // Fetch the current service count
         fetchAndDisplayUserData()
     }
