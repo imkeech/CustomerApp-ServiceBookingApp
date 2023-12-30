@@ -25,7 +25,8 @@
 
             <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:scrollbars="none">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
                             android:id="@+id/ph_no"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="+91 1234567890"
+                            android:text=""
                             android:textSize="18sp"
                             app:layout_constraintTop_toBottomOf="@+id/profileName"
                             app:layout_constraintStart_toStartOf="@+id/profileName"
@@ -174,38 +175,6 @@
                                                 android:visibility="gone"
                                                 android:paddingStart="5dp"/>
 
-                                        </LinearLayout>
-
-                                        <LinearLayout
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:paddingBottom="5dp">
-
-                                            <TextView
-                                                android:id="@+id/infoText2"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="Phone Number:"
-                                                android:textSize="15sp"
-                                                android:textStyle="bold"
-                                                />
-
-                                            <TextView
-                                                android:id="@+id/phone_no"
-                                                android:layout_width="wrap_content"
-                                                android:layout_height="wrap_content"
-                                                android:text="+91 "
-                                                android:visibility="visible"
-                                                android:paddingStart="5dp"
-                                                android:textSize="15dp"
-                                                />
-                                            <EditText
-                                                android:layout_width="match_parent"
-                                                android:layout_height="wrap_content"
-                                                android:hint="Phone Number"
-                                                android:id="@+id/editphone_no"
-                                                android:visibility="gone"
-                                                android:paddingStart="5dp"/>
                                         </LinearLayout>
 
                                         <LinearLayout

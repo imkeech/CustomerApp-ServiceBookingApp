@@ -17,6 +17,7 @@ import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -48,8 +49,6 @@ class Profile : AppCompatActivity() {
         val name =findViewById<TextView>(R.id.Name)
         val Editname =findViewById<EditText>(R.id.editName)
         val edit = findViewById<ImageView>(R.id.edit)
-        val Editphone_no =findViewById<EditText>(R.id.editphone_no)
-        val phone_no = findViewById<TextView>(R.id.phone_no)
         val Editemail =findViewById<EditText>(R.id.editemail)
         val email = findViewById<TextView>(R.id.email)
         val Editaddress =findViewById<EditText>(R.id.editaddress)
@@ -62,23 +61,77 @@ class Profile : AppCompatActivity() {
         val Pincode = findViewById<TextView>(R.id.pincode)
         val savebutton = findViewById<Button>(R.id.saveButton)
 
-        edit.setOnClickListener{
-            name.visibility = View.GONE
-            phone_no.visibility = View.GONE
-            email.visibility = View.GONE
-            Address.visibility = View.GONE
-            City.visibility = View.GONE
-            State.visibility = View.GONE
-            Pincode.visibility = View.GONE
+        var isEditing = false
+        edit.setOnClickListener {
+            if (isEditing) {
+                // Reverse the visibility state
+                name.visibility = View.VISIBLE
+                email.visibility = View.VISIBLE
+                Address.visibility = View.VISIBLE
+                City.visibility = View.VISIBLE
+                State.visibility = View.VISIBLE
+                Pincode.visibility = View.VISIBLE
 
-            Editname.visibility = View.VISIBLE
-            Editphone_no.visibility = View.VISIBLE
-            Editemail.visibility = View.VISIBLE
-            Editaddress.visibility = View.VISIBLE
-            Editcity.visibility = View.VISIBLE
-            Editstate.visibility = View.VISIBLE
-            Editpin.visibility = View.VISIBLE
-            savebutton.visibility = View.VISIBLE
+                Editname.visibility = View.GONE
+                Editemail.visibility = View.GONE
+                Editaddress.visibility = View.GONE
+                Editcity.visibility = View.GONE
+                Editstate.visibility = View.GONE
+                Editpin.visibility = View.GONE
+                savebutton.visibility = View.GONE
+            } else {
+                // Toggle the visibility state
+                name.visibility = View.GONE
+                email.visibility = View.GONE
+                Address.visibility = View.GONE
+                City.visibility = View.GONE
+                State.visibility = View.GONE
+                Pincode.visibility = View.GONE
+
+                Editname.visibility = View.VISIBLE
+                Editemail.visibility = View.VISIBLE
+                Editaddress.visibility = View.VISIBLE
+                Editcity.visibility = View.VISIBLE
+                Editstate.visibility = View.VISIBLE
+                Editpin.visibility = View.VISIBLE
+                savebutton.visibility = View.VISIBLE
+            }
+
+            // Update the visibility flag
+            isEditing = !isEditing
+        }
+
+        savebutton.setOnClickListener {
+            val newName = Editname.text.toString().trim()
+            val newEmail = Editemail.text.toString().trim()
+            val newAddress = Editaddress.text.toString().trim()
+            val newCity = Editcity.text.toString().trim()
+            val newState = Editstate.text.toString().trim()
+            val newPincode = Editpin.text.toString().trim()
+
+            if (newName.isNotEmpty() && newEmail.isNotEmpty() && newAddress.isNotEmpty()
+                && newCity.isNotEmpty() && newState.isNotEmpty() && newPincode.isNotEmpty()) {
+                updateCustomerDetails(newName, newEmail, newAddress, newCity, newState, newPincode)
+
+                name.visibility = View.VISIBLE
+                email.visibility = View.VISIBLE
+                Address.visibility = View.VISIBLE
+                City.visibility = View.VISIBLE
+                State.visibility = View.VISIBLE
+                Pincode.visibility = View.VISIBLE
+
+                Editname.visibility = View.GONE
+                Editemail.visibility = View.GONE
+                Editaddress.visibility = View.GONE
+                Editcity.visibility = View.GONE
+                Editstate.visibility = View.GONE
+                Editpin.visibility = View.GONE
+                savebutton.visibility = View.GONE
+            } else {
+                // Handle the case where any field is empty
+                // You can show a Toast or an error message to the user
+                Toast.makeText(this, "Fill all the Details!", Toast.LENGTH_LONG).show()
+            }
 
         }
 
@@ -189,7 +242,6 @@ class Profile : AppCompatActivity() {
                         val state = document.getString("state")
 
                         val nameTextView = findViewById<TextView>(R.id.Name)
-                        val phone_no = findViewById<TextView>(R.id.phone_no)
                         val addressTextView = findViewById<TextView>(R.id.Address)
                         val cityTextView = findViewById<TextView>(R.id.city)
                         val emailTextView = findViewById<TextView>(R.id.email)
@@ -197,7 +249,6 @@ class Profile : AppCompatActivity() {
                         val stateTextView = findViewById<TextView>(R.id.state)
 
                         nameTextView.text = customerName
-                        phone_no.text = phoneNumber
                         addressTextView.text = address
                         cityTextView.text = city
                         emailTextView.text = email
@@ -238,6 +289,8 @@ class Profile : AppCompatActivity() {
                 Log.d("ServiceBooking", "Error getting service bookings: $exception")
             }
     }
+
+
 
     private fun createServiceBookingCard(
         others: String?,
@@ -330,6 +383,58 @@ class Profile : AppCompatActivity() {
             }
     }
 
+
+    private fun updateCustomerDetails(
+        newName: String,
+        newEmail: String,
+        newAddress: String,
+        newCity: String,
+        newState: String,
+        newPincode: String
+    ) {
+        val phoneNumber = mAuth.currentUser?.phoneNumber
+
+        if (!phoneNumber.isNullOrEmpty()) {
+            val customerDetailsRef = db.collection("customerDetails")
+            customerDetailsRef
+                .whereEqualTo("ph_no", phoneNumber)
+                .get()
+                .addOnSuccessListener { documents ->
+                    if (!documents.isEmpty) {
+                        val documentId = documents.documents[0].id
+
+                        val updatedDetails = hashMapOf(
+                            "name" to newName,
+                            "address" to newAddress,
+                            "city" to newCity,
+                            "email" to newEmail,
+                            "pincode" to newPincode,
+                            "state" to newState
+                        )
+
+                        customerDetailsRef.document(documentId)
+                            .update(updatedDetails as Map<String, Any>)
+                            .addOnSuccessListener {
+                                // Update successful
+                                // Show success message or handle appropriately
+                                Log.d("Edit", "Update Successfull")
+                                Toast.makeText(this, "Details updated successfully!", Toast.LENGTH_SHORT).show()
+                            }
+                            .addOnFailureListener { e ->
+                                // Handle errors
+                                Log.w("Profile", "Error updating document", e)
+                            }
+                    } else {
+                        Log.d("Profile", "No matching documents")
+                    }
+                }
+                .addOnFailureListener { exception ->
+                    Log.d("Profile", "Error getting documents: ", exception)
+                }
+        }
+    }
+
+
     private fun createServiceBookingCard1(
         others: String?,
         problem: String?,
@@ -391,6 +496,9 @@ class Profile : AppCompatActivity() {
 
         return cardView
     }
+
+
+
 
     override fun onBackPressed() {
         if (!customBottomNavigationView.onBackPressed()) {
