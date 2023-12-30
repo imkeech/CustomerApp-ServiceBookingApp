@@ -15,8 +15,8 @@
     <!-- Add the necessary TextViews for customer details -->
     <ImageView
         android:id="@+id/printerImageView"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:layout_gravity="center"
         android:src="@drawable/baseline_print_24"
     />
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/gotham"
         android:textColor="@color/black"
+        android:layout_marginTop="20dp"
         android:gravity="center"
         android:textSize="18sp" />
 
@@ -55,7 +56,7 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:id="@+id/Book"
-        android:text="Book"
+        android:text="Book Service"
         />
 
 
@@ -146,7 +147,7 @@
             android:layout_marginTop="24dp"
             android:layout_marginBottom="1dp"
             android:backgroundTint="@color/prjtred"
-            android:text="CONFIRM SERVICE"
+            android:text="SUBMIT"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="16sp" />

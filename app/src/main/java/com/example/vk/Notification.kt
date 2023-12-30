@@ -42,10 +42,13 @@ class Notification : AppCompatActivity() {
                     Log.d("notification", "$notifDbRef")
                     val description = doc.getString("description")
                     val fromApp = doc.getString("app")
+                    val status = doc.getString("status")
+
+                    Log.d("final","$fromApp $status")
                     val cardDesc = cardView.findViewById<TextView>(R.id.notificationDescription)
                     val clearButton = cardView.findViewById<ImageView>(R.id.clearButton)
 
-                    cardDesc.text = if (fromApp !="Engineer") {
+                    cardDesc.text = if (fromApp =="Engineer") {
                         description + "\n"} else {description}
 
                     // Set a unique tag for the card view

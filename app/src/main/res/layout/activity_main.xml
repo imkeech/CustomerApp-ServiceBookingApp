@@ -9,6 +9,11 @@
     android:gravity="center"
     tools:context=".MainActivity">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollable">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -16,40 +21,25 @@
         android:padding="16dp">
 
         <ImageView
-            android:layout_width="235dp"
-            android:layout_height="229dp"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
             android:layout_gravity="center"
-            android:src="@drawable/phone_no" />
+            android:src="@drawable/phoneno1" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/gotham"
-            android:text="Verify your number"
+            android:text="Enter Your Number"
             android:textAlignment="center"
-            android:textSize="28sp"
+            android:textSize="25sp"
             android:textStyle="bold" />
-
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:layout_marginBottom="16dp"
-            android:fontFamily="@font/gotham"
-            android:text="Enter Mobile Number"
-            android:textAlignment="center"
-            android:textColor="#a3a3a3"
-            android:textSize="16sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:layout_marginBottom="12dp"
             android:weightSum="100">
 
             <LinearLayout
@@ -99,7 +89,7 @@
             android:layout_width="350dp"
             android:layout_height="55dp"
             android:layout_gravity="center"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="1dp"
             android:text="Login"
             android:textAllCaps="false"
@@ -108,5 +98,5 @@
             android:textSize="16sp" />
 
     </LinearLayout>
-
+    </ScrollView>
 </LinearLayout>
